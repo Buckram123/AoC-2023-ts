@@ -34,18 +34,18 @@ function main() {
     let buf = "";
 
     for (let i = 0; i < line.length; i++) {
-      const c = line.charAt(i);
-      buf += c;
+      const character = line.charAt(i);
+      buf += character;
 
       const sNum = spelledNum(buf);
-      const num = parseInt(c);
-      if (!isNaN(num)) {
+      const digit = parseInt(character);
+      if (!isNaN(digit)) {
         if (first_num == 0) {
-          first_num = num;
+          first_num = digit;
         }
-        last_num = num;
+        last_num = digit;
       } else if (!isNaN(sNum)) {
-        buf = c;
+        buf = character;
         if (first_num == 0) {
           first_num = sNum;
         }

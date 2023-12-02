@@ -9,12 +9,12 @@ function main() {
     let last_num = 0;
 
     for (let i = 0; i < line.length; i++) {
-      const num = parseInt(line.charAt(i));
-      if (!isNaN(num)) {
+      const digit = parseInt(line.charAt(i));
+      if (!isNaN(digit)) {
         if (first_num == 0) {
-          first_num = num;
+          first_num = digit;
         }
-        last_num = num;
+        last_num = digit;
       }
     }
     sum += first_num * 10 + last_num;
