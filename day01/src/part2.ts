@@ -6,7 +6,7 @@ import * as fs from "fs";
  *
  * In case of a failure it will return zero
  */
-const parseSpelledDigit = (s: string): number => {
+const findSpelledDigit = (s: string): number => {
   const spelled_digits = [
     "one",
     "two",
@@ -38,7 +38,7 @@ function main() {
       const character = line.charAt(i);
       spelled_buf += character;
 
-      const spelled_digit = parseSpelledDigit(spelled_buf);
+      const spelled_digit = findSpelledDigit(spelled_buf);
       const digit = parseInt(character);
       // If we found digit character or spelled number - update last number
       // and assign first number if it was not assigned yet
