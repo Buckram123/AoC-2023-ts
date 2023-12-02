@@ -1,0 +1,23 @@
+{
+  "name": "aoc-ts",
+  "version": "1.0.0",
+  "description": "Мій друг-тайпскриптер робить задачі використовуючи rust, а я растиканець використовую typescript Його репозиторій: https://github.com/Slavkololo/adventure-of-code-2023",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Buckram123/AoC-2023-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Buckram123/AoC-2023-ts/issues"
+  },
+  "homepage": "https://github.com/Buckram123/AoC-2023-ts#readme",
+  "devDependencies": {
+    "@types/node": "^20.10.2"
+  }
+}
