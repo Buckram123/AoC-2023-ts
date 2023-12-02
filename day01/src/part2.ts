@@ -27,7 +27,7 @@ function main() {
 
   let sum = 0;
 
-  splitted.forEach((line) => {
+  splitted.forEach((line: string) => {
     let first_num = 0;
     let last_num = 0;
 
