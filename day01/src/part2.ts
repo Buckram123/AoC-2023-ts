@@ -42,7 +42,7 @@ function main() {
       const digit = parseInt(character);
       // If we found digit character or spelled number - update last number
       // and assign first number if it was not assigned yet
-      if (!isNaN(digit)) {
+      if (!!digit) {
         if (first_digit == 0) {
           first_digit = digit;
         }
