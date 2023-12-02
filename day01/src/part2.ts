@@ -1,25 +1,25 @@
 import * as fs from "fs";
 
-const nums = [
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-];
-
-const spelledNum = (s: string): number => {
-  const found = nums.findIndex((num) => s.includes(num));
-
-  if (found != -1) {
-    return found + 1;
-  } else {
-    return NaN;
-  }
+/**
+ * Tries to find spelled digit in a string, returning corresponding number for example "oeightp" => 8
+ * Supports digits from "one" to "nine"
+ *
+ * In case of a failure it will return zero
+ */
+const parseSpelledDigit = (s: string): number => {
+  const spelled_digits = [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+  ];
+  const index = spelled_digits.findIndex((num) => s.includes(num));
+  return index + 1;
 };
 
 function main() {
@@ -28,31 +28,35 @@ function main() {
   let sum = 0;
 
   splitted.forEach((line: string) => {
-    let first_num = 0;
-    let last_num = 0;
+    let first_digit = 0;
+    let last_digit = 0;
 
-    let buf = "";
+    // Buffer for spelled digit
+    let spelled_buf = "";
 
     for (let i = 0; i < line.length; i++) {
       const character = line.charAt(i);
-      buf += character;
+      spelled_buf += character;
 
-      const sNum = spelledNum(buf);
+      const spelled_digit = parseSpelledDigit(spelled_buf);
       const digit = parseInt(character);
+      // If we found digit character or spelled number - update last number
+      // and assign first number if it was not assigned yet
       if (!isNaN(digit)) {
-        if (first_num == 0) {
-          first_num = digit;
+        if (first_digit == 0) {
+          first_digit = digit;
         }
-        last_num = digit;
-      } else if (!isNaN(sNum)) {
-        buf = character;
-        if (first_num == 0) {
-          first_num = sNum;
+        last_digit = digit;
+      } else if (spelled_digit !== 0) {
+        // Reset buffer to current character to cover cases like "zerone"
+        spelled_buf = character;
+        if (first_digit == 0) {
+          first_digit = spelled_digit;
         }
-        last_num = sNum;
+        last_digit = spelled_digit;
       }
     }
-    sum += first_num * 10 + last_num;
+    sum += first_digit * 10 + last_digit;
   });
 
   console.log(sum);

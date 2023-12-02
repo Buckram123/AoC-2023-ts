@@ -5,19 +5,19 @@ function main() {
 
   let sum = 0;
   splitted.forEach((line: string) => {
-    let first_num = 0;
-    let last_num = 0;
+    let first_digit = 0;
+    let last_digit = 0;
 
     for (let i = 0; i < line.length; i++) {
       const digit = parseInt(line.charAt(i));
-      if (!isNaN(digit)) {
-        if (first_num == 0) {
-          first_num = digit;
+      if (!!digit) {
+        if (first_digit == 0) {
+          first_digit = digit;
         }
-        last_num = digit;
+        last_digit = digit;
       }
     }
-    sum += first_num * 10 + last_num;
+    sum += first_digit * 10 + last_digit;
   });
 
   console.log(sum);
