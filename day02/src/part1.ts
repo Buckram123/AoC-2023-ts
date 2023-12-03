@@ -9,20 +9,21 @@ function main() {
   let sum = 0;
 
   splitted.forEach((line: string) => {
-    const game_and_sets = line.split(":");
-    const game = game_and_sets[0].split(" ");
-    if (game[0] !== "Game") {
+    if (line === "") {
       return;
     }
+    const [game, sets] = line.split(":", 2);
+    const [_, game_num_str] = game.split(" ", 2);
+    const game_num = parseInt(game_num_str);
+    const sets_splitted = sets.split(";");
+
     let possible_game = true;
-    const game_num = parseInt(game[1]);
-    const sets = game_and_sets[1].split(";");
-    sets.forEach((set: string) => {
+
+    sets_splitted.forEach((set: string) => {
       const colors = set.split(",");
       colors.forEach((color: string) => {
-        const color_and_name = color.trim().split(" ");
-        const color_num = parseInt(color_and_name[0]);
-        const color_name = color_and_name[1];
+        const [color_num_str, color_name] = color.trim().split(" ", 2);
+        const color_num = parseInt(color_num_str);
         if (
           (color_name === "red" && color_num > maxRed) ||
           (color_name === "green" && color_num > maxGreen) ||
