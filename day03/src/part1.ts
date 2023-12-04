@@ -14,6 +14,9 @@ const insideNum = (
   return i == start_i && j >= start_j && j < end_j;
 };
 
+// After part 2 I realized we could have seeked for "symbols" instead
+// after that check [0, -1], [0, 1], [1, 0] and [1, 1] (if no "symbol" on [1, 0]) positions
+// and saving those numbers. That would have been much faster
 const partNum = (
   input: string[],
   start_i: number,
